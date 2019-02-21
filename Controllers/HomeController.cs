@@ -38,12 +38,13 @@ namespace FileToFolder.Controllers
 
             // full path to file in temp location
             var filePath = MovieFolder + fileModel.FolderName;
+            Directory.CreateDirectory(filePath);
 
             foreach (var formFile in fileModel.Files)
             {
                 if (formFile.Length > 0)
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    using (var stream = new FileStream(filePath+"/"+formFile.FileName, FileMode.Create))
                     {
                         await formFile.CopyToAsync(stream);
                     }
