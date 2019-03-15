@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -31,8 +32,14 @@ namespace FileToFolder
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+//            services.Configure<FormOptions>(x =>
+//            {
+//                x.ValueLengthLimit = long.MaxValue;
+//                x.MultipartBodyLengthLimit = int.MaxValue;
+//                x.MultipartHeadersLengthLimit = int.MaxValue;
+//            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

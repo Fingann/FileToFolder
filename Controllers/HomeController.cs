@@ -32,6 +32,7 @@ namespace FileToFolder.Controllers
        
         
         [HttpPost("UploadFiles")]
+        [DisableRequestSizeLimit]   
         public async Task<IActionResult> UploadFiles(FileModel fileModel)
         {
             long size = fileModel.Files.Sum(f => f.Length);
